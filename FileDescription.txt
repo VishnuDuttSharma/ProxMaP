@@ -1,0 +1,16 @@
+## Data generation
+data_generation.py: File to generate dataset. This directory already includes data, so you don't need to run it.
+helper_v3.py: Helper code based on AI2THOR for data geenration
+updated_description_ang0.csv: File containing metatdata for dataset (numpy files)
+data/: Directory containing input and ground truth maps
+
+## Model training
+train_classification.py: File to train the classification model
+test_classification.py: File to test the classification model
+train_regression.py: File to train the regression model
+test_regression.py: File to test the regression model
+command.txt: Shows example training and test command
+
+dataloader: Directory containing dataloader for model
+saved_models: Directory for saving models
+tblogdir: Tensorboard log directory

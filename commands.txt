@@ -1,0 +1,4 @@
+train:
+	python -u train_classification.py --epoch 500 --batch-size 8 --learning-rate 0.01 --validation 10 --loss-function 'crossent' --logdir ./tblogdir/ 
+test:
+	python test_classification.py --model-path ../saved_models/classfn_noseg_adam_0.01_epoch_500_crossent_scale_1.0_es_-1.pth --batch-size 8 --device gpu --show	
