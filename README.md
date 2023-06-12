@@ -17,6 +17,8 @@ Already generated data is avaialable for download as a [zip file here](https://o
 
 Training
 ========
+The code for ProxMaP is deveoped using [UNet implementation by milesial](https://github.com/milesial/Pytorch-UNet/).
+
 For training the model, create directories named `saved_models` (for saving models as _.pth_ files) and `tblogdir` (for saving tensorboard logs). Then run the following command `python train_classification.py --epoch 500 --batch-size 8 --learning-rate 0.01 --validation 10 --loss-function 'crossent' --logdir ./tblogdir/`. 
 
 You can look at other training parameters by running `python train_classification.py --help`.
