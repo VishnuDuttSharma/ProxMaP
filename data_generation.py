@@ -12,19 +12,10 @@ from tqdm import tqdm
 
 g_count = 0
 inp_dir = 'inp_data/'
-inp_seg_dir = 'inp_seg_data/'
 gt_dir = 'gt_data/'
+
 descfile = 'updated_description_ang0.csv'
 
-object_superlist = {
-    'ceiling' : ['ceiling', 'ceilinglight'],
-    'chairs' : ['armchair', 'chair', 'sofa', 'ottoman', 'stool'],
-    'tables' : ['coffeetable', 'desk', 'diningtable', 'sidetable'],
-    'floor' : ['floor', 'rug'],
-    'walls' : ['blinds', 'door', 'painting', 'wall', 'wallcabinet', 'wallcabinetbody', 'window']
-}
-
-class_list = ['chairs', 'tables', 'floor', 'walls', 'ceiling']
 
 df = pd.DataFrame(columns=['Filename',
                            'FloorName',
@@ -80,8 +71,6 @@ for fl_num in range(201, 231):
 
             gt_map = np.maximum(np.abs(inp_occ_map), np.maximum(np.abs(left_occ_map), np.abs(right_occ_map))) * np.sign(inp_occ_map + left_occ_map + right_occ_map)
 
-            seg_pcd = controller.get_seg_point_cloud(object_superlist, obj_to_color_map, class_list)
-            seg_map_6ch =  get_seg_occ_map(seg_pcd, max_pts=255, class_list=class_list)
 
             free_perc = 100*np.sum(gt_map == 0)/gt_map.size
             occ_perc = 100*np.sum(inp_occ_map != 0)/inp_occ_map.size
@@ -101,7 +90,6 @@ for fl_num in range(201, 231):
 
             np.save(inp_dir+file_name+'.npy', arr=inp_occ_map)
             np.save(gt_dir+file_name+'.npy', arr=gt_map)
-            np.save(inp_seg_dir+file_name+'.npy', arr=seg_map_6ch)
 
             df = df.append(desc, ignore_index=True)
 
